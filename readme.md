@@ -1,4 +1,4 @@
 # 说明
 
-DSA is abbreviatedto "Data Structure and Algorithm".
+DSA is abbreviated to "Data Structure and Algorithm".
 
