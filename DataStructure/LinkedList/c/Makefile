@@ -1,25 +1,32 @@
-TARGET = bin/app
-
 CXX = gcc
+
 SRC = src
 OBJ = obj
-OBJS =  $(OBJ)/main.o \
-		$(OBJ)/SingleLinked.o
+BIN = bin
+INC = include
+TARGET = $(BIN)/app
+
+OBJS = $(addprefix $(OBJ)/, \
+		 main.o \
+		 SingleLinked.o \
+		)
 
 FLAGS += -Iinclude
 
-vpath %.c src
-vpath %.o obj
-vpath %.h include
+vpath %.c $(SRC)
+vpath %.o $(OBJ)
+vpath %.h $(INC)
+
 
 $(TARGET): $(OBJS)
-	$(CXX) -o $@ $(OBJS)
-$(OBJ)/main.o : main.c 
-	$(CXX) -c $^ $(FLAGS) -o $@
-$(OBJ)/SingleLinked.o : SingleLinked.c
+	$(CXX) $^ -o $@
+
+$(OBJ)/%.o : %.c
 	$(CXX) -c $^ $(FLAGS) -o $@
 
 
-.PHONY : clean
+.PHONY : clean pre
+config:
+	-mkdir $(BIN) $(OBJ)
 clean:
-	-rm $(TARGET) $(OBJS)
+	-rm ./bin ./obj -rf
