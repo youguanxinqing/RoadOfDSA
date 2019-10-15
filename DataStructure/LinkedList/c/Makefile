@@ -25,8 +25,8 @@ $(OBJ)/%.o : %.c
 	$(CXX) -c $^ $(FLAGS) -o $@
 
 
-.PHONY : clean pre
+.PHONY : clean config
 config:
 	-mkdir $(BIN) $(OBJ)
 clean:
-	-rm ./bin ./obj -rf
+	-rm $(BIN) $(OBJ) -rf
