@@ -4,26 +4,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+struct TreeNode;
+typedef struct TreeNode *Position;
+typedef struct TreeNode *SearchTree;
+typedef int Element;
 
-#define true 1
-#define false 0
-
-
-type struct tree_node {
-	int val;
-	tree_node *left;
-	tree_node *right;
-} TreeNode;
-
-/* 构建BST */
-TreeNode *BuildBST(int[] arr);
-
-/* 增删查 */
-int InsertBST(TreeNode *T, int num);
-int DeleteBST(TreeNode *T, int key);
-int SearchBST(TreeNode T, int key, TreeNode *P);
-
-/* 中序遍历 */
-void TraverseBST(TreeNode *T, int[] arr);
+SearchTree MakeEmpty(SearchTree T);
+Position Find(Element E, SearchTree T);
+Position FindMin(SearchTree T);
+Position FindMax(SearchTree T);
+SearchTree Insert(Element E, SearchTree T);
+SearchTree Delete(Element E, SearchTree T);
+Element Retrive(Position T);
 
 #endif
+
+struct TreeNode {
+    Element E;
+    SearchTree Left, Right;
+};
