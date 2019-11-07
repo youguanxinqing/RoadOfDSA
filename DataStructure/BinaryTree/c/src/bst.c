@@ -3,7 +3,6 @@
 
 #include "bst.h"
 
-
 SearchTree MakeEmpty( SearchTree T ) {
 	if ( T ) {
 		MakeEmpty( T->Left );
@@ -77,9 +76,8 @@ Element Retrieve( Position P ) {
 void InOrder( SearchTree T ) {
 	if ( T ) {
 		InOrder( T->Left );
-		Element val = Retrieve( R );
+		Element val = Retrieve( T );
 		printf("%d ", val);
 		InOrder( T->Right );
 	}
-	else printf("\n");
 }
