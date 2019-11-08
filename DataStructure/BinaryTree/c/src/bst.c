@@ -42,9 +42,8 @@ SearchTree Insert( Element X, SearchTree T ) {
 		T->val = X;
 		T->Left = T->Right = NULL;
 	}
-	else if ( X == T->val ) return T;
 	else if ( X < T->val ) T->Left = Insert( X, T->Left );
-	else T->Right = Insert( X, T->Right );
+	else if ( X > T->val ) T->Right = Insert( X, T->Right );
 	return T;
 }
 
