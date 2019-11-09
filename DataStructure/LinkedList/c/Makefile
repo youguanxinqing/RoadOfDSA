@@ -29,4 +29,4 @@ $(OBJ)/%.o : %.c
 config:
 	-mkdir $(BIN) $(OBJ)
 clean:
-	-rm $(BIN) $(OBJ) -rf
+	-rm -rf $(BIN) $(OBJ)

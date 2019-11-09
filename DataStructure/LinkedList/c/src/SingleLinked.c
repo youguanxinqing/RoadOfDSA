@@ -1,114 +1,135 @@
+#include <stdio.h>
+#include <stdlib.h>
+
 #include "SingleLinked.h"
 
-List MakeEmpty(List L)
-{
-    if (!L) {
-        L = malloc(sizeof(struct Node));
-        L->next = NULL;
-    } else if (L->next != NULL) {
-        DeleteList(L);
+#define FatalError printf
+
+List MakeEmpty( List L ) {
+    if ( !L ) {
+        L = malloc( sizeof( struct Node ) );
+        if ( !L )
+            FatalError( "no enough memory" );
+        L->Next = NULL;
     }
+    else if ( L->Next )
+        DeleteList( L );
     return L;
 }
 
-int IsEmpty(List L)
-{
-    if (!L) {
-        return -1;
-    } else if (!L->next) {
-        return 1;
-    } else {
-        return 0;
-    }
+int IsEmpty( List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    return L->Next == NULL;
 }
 
-int IsLast(Position P)
-{
-    if (!P) {
-        return -1;
-    } else if (!P->next) {
-        return 1;
-    } else {
-        return 0;
-    }
+int IsLast( Position P, List L ) {
+    if ( !P )
+        FatalError( "unexpected null pointer\n" );
+    return P->Next == NULL;
 }
 
-Position Find(ElemType E, List L)
-{
-    Position P = NULL;
-
-    if (L) {
-        P = L->next;
-        while (P && P->elem != E)
-            P = P->next;
+Position Find( Element X, List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    
+    Position P = L->Next;
+    while ( P ) {
+        if ( X == P->val )
+            break;
+        P = P->Next;
     }
     return P;
 }
 
-Position FindPrevious(ElemType E, List L)
-{
+Position FindPrevious( Element X, List L ) {
     Position P = NULL;
-    if (L) {
-        P = L;
-        while (P->next && P->next->elem != E)
-            P = P->next;
-    }
-    return P;
-}
-
-void Delete(ElemType E, List L)
-{
-    Position P = FindPrevious(E, L);
-    if (P) {
-        Position tmpcell = P->next;
-        P->next = P->next->next;
-        free(tmpcell);
-    }
-}
-
-void Insert(ElemType E, List L, Position P)
-{
-    Position ptr;
-    
-    if (!L) return;
-    
-    ptr = malloc(sizeof(struct Node));
-    ptr->elem = E;
-    ptr->next = NULL;
-
-    ptr->next = P->next;
-    P->next = ptr;
-}
-
-void DeleteList(List L)
-{
-    PtrNode tmpcell = NULL;
-    while (L && L->next) {
-        tmpcell = L->next;
-        L->next = L->next->next;
-        free(tmpcell);
-    }
-}
-
-void PrintNode(Position P)
-{
-    if (P) {
-        printf("%d\n", P->elem);
-    } else {
-        printf("%s\n", "nil");
-    }
-}
-
-void PrintLinked(List L)
-{
-    if (L) {
-        Position P = L->next;
-        while (P) {
-            printf("%d ", P->elem);
-            P = P->next;
+    while ( L && L->Next ) {
+        if ( X == L->Next->val ) {
+            P = L;
+            break;
         }
-        printf("\n");
-    } else {
-        printf("%s\n", "nil");
+        L = L->Next;
     }
+    return P;
+}
+
+void Delete( Element X, List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    
+    Position Tmp = NULL;
+    Position P = FindPrevious( X, L );
+    if ( P ) {
+        Tmp = P->Next;
+        P->Next = Tmp->Next;
+        free( Tmp );
+    }
+}
+
+void DeleteList( List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    
+    Position Tmp = NULL, P = L->Next;
+    while ( P ) {
+        Tmp = P;
+        P = P->Next;
+        free( Tmp );
+    }
+    L->Next = NULL;
+}
+
+void Insert( Element X, Position P, List L ) {
+    if ( !P )
+        FatalError( "unexpected null pointer\n" );
+    
+    Position Tmp = malloc( sizeof( struct Node ) );
+    if ( !Tmp )
+        FatalError( "unexpected null pointer\n" );
+    Tmp->val = X;
+    Tmp->Next = P->Next;
+    P->Next = Tmp;
+}
+
+Position Header( List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    return L;
+}
+
+Position First( List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    return L->Next;
+}
+
+Position Advance( Position P ) {
+    if ( !P )
+        FatalError( "unexpected null pointer\n" );
+    return P->Next;
+}
+
+Element Retrieve( Position P ) {
+    if ( !P )
+        FatalError( "unexpected null pointer\n" );
+    return P->val;
+}
+
+void PrintNode( Position P ) {
+    if ( !P )
+        FatalError( "unexpected null pointer\n" );
+    printf( "%d\n", P->val );
+}
+
+void PrintList( List L ) {
+    if ( !L )
+        FatalError( "unexpected null pointer\n" );
+    
+    L = L->Next;
+    while ( L ) {
+        printf( "%d ", L->val );
+        L = L->Next;
+    }
+    printf("\n");
 }
