@@ -21,3 +21,11 @@ LRU, LFU, FIFO。
 # 链表缺点
 
 对链表进行频繁的插入、删除操作，会导致频繁的内存申请和释放，容易造成内存碎片。
+
+# 题型
+
+[206. 反转链表](https://leetcode-cn.com/problems/reverse-linked-list/)
+[24. 两两交换链表中的节点](https://leetcode-cn.com/problems/swap-nodes-in-pairs/)
+[141. 环形链表](https://leetcode-cn.com/problems/linked-list-cycle/)
+[142. 环形链表 II](https://leetcode-cn.com/problems/linked-list-cycle-ii/)
+[25. K 个一组翻转链表](https://leetcode-cn.com/problems/reverse-nodes-in-k-group/)
