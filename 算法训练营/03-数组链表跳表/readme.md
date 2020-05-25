@@ -4,7 +4,7 @@ https://leetcode-cn.com/problems/two-sum/
 # Array 实战
 - https://leetcode-cn.com/problems/container-with-most-water/
 - https://leetcode-cn.com/problems/move-zeroes/
-- https://leetcode.com/problems/climbing-stairs/
+- https://leetcode-cn.com/problems/climbing-stairs/
 - https://leetcode-cn.com/problems/3sum/ (高频老题）
 
 # Linked List 实战
