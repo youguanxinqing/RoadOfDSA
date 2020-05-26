@@ -8,11 +8,11 @@ https://leetcode-cn.com/problems/two-sum/
 - https://leetcode-cn.com/problems/3sum/ (高频老题）
 
 # Linked List 实战
-- https://leetcode.com/problems/reverse-linked-list/
-- https://leetcode.com/problems/swap-nodes-in-pairs
-- https://leetcode.com/problems/linked-list-cycle
-- https://leetcode.com/problems/linked-list-cycle-ii
-- https://leetcode.com/problems/reverse-nodes-in-k-group/
+- https://leetcode-cn.com/problems/reverse-linked-list/
+- https://leetcode-cn.com/problems/swap-nodes-in-pairs
+- https://leetcode-cn.com/problems/linked-list-cycle
+- https://leetcode-cn.com/problems/linked-list-cycle-ii
+- https://leetcode-cn.com/problems/reverse-nodes-in-k-group/
 
 # 课后作业
 - https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/
