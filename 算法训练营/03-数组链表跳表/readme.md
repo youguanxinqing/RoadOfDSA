@@ -1,6 +1,4 @@
 
-https://leetcode-cn.com/problems/two-sum/
-
 # Array 实战
 - https://leetcode-cn.com/problems/container-with-most-water/
 - https://leetcode-cn.com/problems/move-zeroes/
@@ -20,5 +18,4 @@ https://leetcode-cn.com/problems/two-sum/
 - https://leetcode-cn.com/problems/merge-two-sorted-lists/
 - https://leetcode-cn.com/problems/merge-sorted-array/
 - https://leetcode-cn.com/problems/two-sum/
-- https://leetcode-cn.com/problems/move-zeroes/
 - https://leetcode-cn.com/problems/plus-one/
