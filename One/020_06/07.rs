@@ -7,15 +7,18 @@
 // @lc code=start
 impl Solution {
     pub fn new21_game(n: i32, k: i32, w: i32) -> f64 {
-        let mut s: f64 = 0.0;
-        let mut dp = vec![0.0; (k+w) as usize];
+        // convert type
+        let (n, k, w) = (n as usize, k as usize, w as usize);
+
+        let mut dp = vec![0.0; k+w];
+        let mut s = 0.0;
         for i in k..k+w {
-            dp[i as usize] = if i <= n {1 as f64} else {0 as f64};
-            s = s + dp[i as usize];
+            dp[i] = if i <= n {1.0} else {0.0};
+            s = s + dp[i];
         }
         for i in (0..k).rev() {
-            dp[i as usize] = s / (w as f64);
-            s = s - dp[(i+w) as usize] + dp[i as usize];
+            dp[i] = s / w as f64;
+            s = s - dp[i+w] + dp[i];
         }
         dp[0]
     }
