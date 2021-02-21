@@ -8,7 +8,7 @@
 class Solution:
     def isPerfectSquare(self, num: int) -> bool:
         low, high = 0, num//2+1
-        while low < high:
+        while low <= high:
             mid = (low + high) >> 1
             if mid**2 == num:
                 return True
