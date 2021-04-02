@@ -14,17 +14,14 @@
 
 class Solution:
     def sumOfLeftLeaves(self, root: TreeNode) -> int:
-        return self.count(root, "")
-    
-    def count(self, root, flag):
+        return self.count(root, False)
+
+    def count(self, root, is_left):
         if not root:
             return 0
         
-        if not root.left and not root.right:
-            if flag == "l":
-                return root.val
-            else:
-                return 0
-        
-        return self.count(root.left, "l") + self.count(root.right, "r")
+        if is_left and not root.left and not root.right:
+            return root.val + self.count(root.left, True) + self.count(root.right, False)
+        return self.count(root.left, True) + self.count(root.right, False)
+
 # @lc code=end
